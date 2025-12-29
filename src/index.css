@@ -1,0 +1,8 @@
+@import "tailwindcss";
+body {
+  font-family: 'Roboto', sans-serif;
+}
+.my-component-text {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700; 
+}
