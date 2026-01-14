@@ -1,6 +1,7 @@
 @import "tailwindcss";
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f6;
 }
 .my-component-text {
   font-family: 'Roboto', sans-serif;

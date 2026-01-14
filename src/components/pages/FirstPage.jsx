@@ -2,6 +2,7 @@ import Categories from "../categories";
 import Slider from "../Slider";
 import FlashSale from "../FlashSale";
 import JustForYou from "../JustForYou";
+import LoadMore from "../LoadMore";
 const FirstPage = () => {
   return (
     <>
@@ -10,6 +11,7 @@ const FirstPage = () => {
         <FlashSale />
         <Categories />
         <JustForYou />
+        <LoadMore />
       </div>
     </>
   );

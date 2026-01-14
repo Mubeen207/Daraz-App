@@ -5,7 +5,7 @@ const JustForYou = () => {
   const fetchProducts = async () => {
     try {
       let response = await fetch("https://fakestoreapi.com/products");
-      if (!response) console.log("Faild to Fatch Products");
+      if (!response.ok) console.log("Faild to Fatch Products");
       let data = await response.json();
       setProduct(data);
     } catch (err) {
@@ -36,7 +36,7 @@ const JustForYou = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center p-6 w-297 h-9.5">
+      <div className="flex flex-col items-center pt-6 w-297">
         <div className="text-[22px] w-full text-[#424242] flex justify-start">
           <span>Just For You</span>
         </div>
