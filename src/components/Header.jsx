@@ -13,12 +13,8 @@ const Header = () => {
     <span className="px-4 cursor-pointer hover:text-[#FFE1D2]">SIGN UP</span>
     <span className="px-4 cursor-pointer hover:text-[#FFE1D2]">زبان تبدیل کریں</span>
   </div>
-
- 
  <div className="flex justify-center pt-4">
   <div className="flex items-end w-295">
-    
-    
     <div className="w-50">
       <img
         src={logo}
@@ -26,8 +22,6 @@ const Header = () => {
         className="w-31.75 h-10 cursor-pointer"
       />
     </div>
-
-  
     <div className="flex bg-white h-11.25 w-175 rounded-xs overflow-hidden">
       <input
         type="text"
