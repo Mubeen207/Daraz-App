@@ -1,4 +1,5 @@
 import AllLinks from "./AllLinks";
+import End from "./End";
 import Payments from "./Payments";
 import TextFooter from "./TextFooter";
 
@@ -9,6 +10,7 @@ const Footer = () => {
         <AllLinks />
         <Payments />
         <TextFooter />
+        <End />
       </div>
     </>
   );

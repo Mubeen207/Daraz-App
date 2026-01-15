@@ -1,6 +1,9 @@
+import { useState } from "react";
 import logo from "../assets/DarazLogo.png";
 import search from "../assets/SEARCH.png";
+import Login from "./auth/Login";
 const Header = () => {
+  const [login, setLogin] = useState(false);
   return (
     <>
      <div className="h-[118.8px] bg-[#f85606] w-full text-white">
@@ -64,7 +67,7 @@ const Header = () => {
 </div>
 
 </div>
-
+        {true && <Login />}
     </>
   );
 };
