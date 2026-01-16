@@ -1,4 +1,4 @@
-const SignUp = () => {
+const SignUp = ({setShowLogin , fun}) => {
   return (
     <>
       <div className="relative z-10 w-111 h-111.25 rounded-md bg-white flex flex-col items-center ">
@@ -45,7 +45,7 @@ const SignUp = () => {
         </div>
         <p className="mt-9 text-[14px] text-center text-[#858b9c]">
           Already have an account?
-          <span className="text-[#1e71ff]"> Log in Now</span>
+          <span className="text-[#1e71ff] cursor-pointer hover:underline" onClick={fun}> Log in Now</span>
         </p>
         <div className="text-[14px] text-center text-[#858b9c] mt-18">
           <p>Or, login with</p>
@@ -72,7 +72,7 @@ const SignUp = () => {
             </p>
           </div>
         </div>
-        <div className="absolute right-5 top-5">
+        <div className="absolute right-5 top-5" onClick={()=> setShowLogin(false)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

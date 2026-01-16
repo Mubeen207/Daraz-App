@@ -1,16 +1,28 @@
 import { useState } from "react";
-
-const Login = () => {
+import Signup from "./SignUp";
+const Login = ({ setShowLogin }) => {
   const [isPassword, setIsPassword] = useState(true);
   const [isPhoneNumber, setIsPhoneNumber] = useState(false);
+  const [showSignUP, setShowSignUP] = useState(false);
   let condition = (flag) => {
     if (flag) {
       setIsPassword(false);
       setIsPhoneNumber(true);
+      setShowSignUP(false);
     } else {
       setIsPassword(true);
       setIsPhoneNumber(false);
     }
+    if (flag === undefined) {
+      setIsPassword(false);
+      setIsPhoneNumber(true);
+      setShowSignUP(false);
+    }
+  };
+  let SignUpControl = () => {
+    setIsPassword(false);
+    setIsPhoneNumber(false);
+    setShowSignUP(true);
   };
   return (
     <>
@@ -56,7 +68,13 @@ const Login = () => {
           </div>
           <p className="mt-3 text-[14px] text-center text-[#858b9c]">
             Don't have an account?{" "}
-            <span className="text-[#1e71ff]"> Sign up</span>
+            <span
+              className="text-[#1e71ff] cursor-pointer hover:underline"
+              onClick={() => SignUpControl()}
+            >
+              {" "}
+              Sign up
+            </span>
           </p>
 
           <div className="text-[14px] text-center text-[#858b9c] mt-10">
@@ -84,7 +102,10 @@ const Login = () => {
               </p>
             </div>
           </div>
-          <div className="absolute right-5 top-5">
+          <div
+            className="absolute right-5 top-5"
+            onClick={setShowLogin}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -142,8 +163,14 @@ const Login = () => {
             </div>
           </div>
           <p className="mt-9 text-[14px] text-center text-[#858b9c]">
-            Don't have an account?{" "}
-            <span className="text-[#1e71ff]"> Sign up</span>
+            Don't have an account?
+            <span
+              className="text-[#1e71ff] cursor-pointer hover:underline"
+              onClick={() => SignUpControl()}
+            >
+              {" "}
+              Sign up
+            </span>
           </p>
 
           <div className="text-[14px] text-center text-[#858b9c] mt-18">
@@ -171,7 +198,10 @@ const Login = () => {
               </p>
             </div>
           </div>
-          <div className="absolute right-5 top-5">
+          <div
+            className="absolute right-5 top-5"
+            onClick={setShowLogin}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -187,6 +217,15 @@ const Login = () => {
               <path d="M28 8 L8 28 M8 8 L28 28"></path>
             </svg>
           </div>
+        </div>
+      )}
+      {showSignUP && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center ">
+          <div
+            onClick={() => setShowLogin(false)}
+            className="absolute inset-0 "
+          ></div>
+          <Signup setShowLogin={setShowLogin} fun={condition} />
         </div>
       )}
     </>

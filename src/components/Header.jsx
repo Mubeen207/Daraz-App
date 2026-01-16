@@ -1,14 +1,26 @@
-import { useState } from "react";
+import React from "react";
+
 import logo from "../assets/DarazLogo.png";
 import search from "../assets/SEARCH.png";
 import Login from "./auth/Login";
-import SignUp from "./auth/SignUp";
 const Header = () => {
-  const [showLogin, setShowLogin] = useState(false);
-  const [showSignUP, setShowSignUP] = useState(false);
+  const [showLogin, setShowLogin] = React.useState(false);
+const [animate, setAnimate] = React.useState(false);
+
+const openLogin = () => {
+  setShowLogin(true);
+  setTimeout(() => setAnimate(true), 10); 
+};
+
+const closeLogin = () => {
+  setAnimate(false); 
+  setTimeout(() => setShowLogin(false), 1000); 
+};
+
+
   return (
     <>
-      <div className="h-[118.8px] bg-[#f85606] w-full text-white">
+      <div className="h-[118.8px] bg-[#f85606] w-full text-white ">
         <div className="flex justify-end text-[12px] items-center h-6.25 px-16">
           <span className="px-4 cursor-pointer hover:text-[#FFE1D2]">
             SAVE MORE ON APP
@@ -21,12 +33,11 @@ const Header = () => {
           </span>
           <span
             className="px-4 cursor-pointer hover:text-[#FFE1D2]"
-            onClick={() => setShowLogin(true)}
+            onClick={openLogin}
           >
             LOGIN
           </span>
-          <span className="px-4 cursor-pointer hover:text-[#FFE1D2]"
-          onClick={() => setShowSignUP(true)}>
+          <span className="px-4 cursor-pointer hover:text-[#FFE1D2]">
             SIGN UP
           </span>
           <span className="px-4 cursor-pointer hover:text-[#FFE1D2]">
@@ -82,23 +93,20 @@ const Header = () => {
         </div>
       </div>
       {showLogin && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center ">
-          <div
-            onClick={() => setShowLogin(false)}
-            className="absolute inset-0 bg-black/40"
-          ></div>
-          <Login />
-        </div>
-      )}
-      {
-        showSignUP && <div className="fixed inset-0 z-50 flex items-center justify-center ">
-          <div
-            onClick={() => setShowSignUP(false)}
-            className="absolute inset-0 bg-black/40"
-          ></div>
-          <SignUp />
-        </div>
-      }
+  <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div
+      onClick={closeLogin}
+      className={`absolute inset-0 bg-black/40 transition-opacity duration-1000 ${animate ? 'opacity-100' : 'opacity-0'}`}
+    ></div>
+    <div
+      className={`bg-white p-6 rounded-lg shadow-lg z-10 transform transition-all duration-200 
+                  ${animate ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}
+    >
+      <Login setShowLogin={closeLogin} />
+    </div>
+  </div>
+)}
+
     </>
   );
 };
