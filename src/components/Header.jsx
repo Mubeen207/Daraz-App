@@ -3,20 +3,30 @@ import React from "react";
 import logo from "../assets/DarazLogo.png";
 import search from "../assets/SEARCH.png";
 import Login from "./auth/Login";
+import SignUp from "./auth/SignUp";
 const Header = () => {
   const [showLogin, setShowLogin] = React.useState(false);
-const [animate, setAnimate] = React.useState(false);
+  const [showSignup, setShowSignup] = React.useState(false);
+  const [animate, setAnimate] = React.useState(false);
 
-const openLogin = () => {
-  setShowLogin(true);
-  setTimeout(() => setAnimate(true), 10); 
-};
+  const openLogin = () => {
+    setShowLogin(true);
+    setTimeout(() => setAnimate(true), 10);
+  };
 
-const closeLogin = () => {
-  setAnimate(false); 
-  setTimeout(() => setShowLogin(false), 1000); 
-};
+  const closeLogin = () => {
+    setAnimate(false);
+    setTimeout(() => setShowLogin(false), 1000);
+  };
+  const openSignup = () => {
+    setShowSignup(true);
+    setTimeout(() => setAnimate(true), 10);
+  };
 
+  const closeSignup = () => {
+    setAnimate(false);
+    setTimeout(() => setShowSignup(false), 1000);
+  };
 
   return (
     <>
@@ -37,7 +47,10 @@ const closeLogin = () => {
           >
             LOGIN
           </span>
-          <span className="px-4 cursor-pointer hover:text-[#FFE1D2]">
+          <span
+            className="px-4 cursor-pointer hover:text-[#FFE1D2]"
+            onClick={openSignup}
+          >
             SIGN UP
           </span>
           <span className="px-4 cursor-pointer hover:text-[#FFE1D2]">
@@ -93,20 +106,33 @@ const closeLogin = () => {
         </div>
       </div>
       {showLogin && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center">
-    <div
-      onClick={closeLogin}
-      className={`absolute inset-0 bg-black/40 transition-opacity duration-1000 ${animate ? 'opacity-100' : 'opacity-0'}`}
-    ></div>
-    <div
-      className={`bg-white p-6 rounded-lg shadow-lg z-10 transform transition-all duration-200 
-                  ${animate ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}
-    >
-      <Login setShowLogin={closeLogin} />
-    </div>
-  </div>
-)}
-
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div
+            onClick={closeLogin}
+            className={`absolute inset-0 bg-black/40 transition-opacity duration-1000 ${animate ? "opacity-100" : "opacity-0"}`}
+          ></div>
+          <div
+            className={`bg-white p-6 rounded-lg shadow-lg z-10 transform transition-all duration-200 
+                  ${animate ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"}`}
+          >
+            <Login setShowLogin={closeLogin} />
+          </div>
+        </div>
+      )}
+      {showSignup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div
+            onClick={closeSignup}
+            className={`absolute inset-0 bg-black/40 transition-opacity duration-1000 ${animate ? "opacity-100" : "opacity-0"}`}
+          ></div>
+          <div
+            className={`bg-white p-6 rounded-lg shadow-lg z-10 transform transition-all duration-200 
+                  ${animate ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"}`}
+          >
+            <SignUp setShowLogin={closeSignup} />
+          </div>
+        </div>
+      )}
     </>
   );
 };
