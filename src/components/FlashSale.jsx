@@ -33,7 +33,7 @@ const FlashSale = () => {
           {product.map((product) => {
             if (product.id < 7) {
               return (
-                <div className="min-h-72.5 w-47 ml-3 shadow-[0_0_25px_rgba(0,0,0,0.08)]">
+                <div className="min-h-72.5 w-47 ml-3 shadow-[0_0_25px_rgba(0,0,0,0.08)]" key={product.id}>
                   <img
                     src={product.image}
                     alt={product.title}
